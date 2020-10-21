@@ -1,33 +1,54 @@
-def find_pare(lst):
-    f_list = []
-    s_list = []
-    for i in range(len(lst)):
-        
-        if lst[i] == '(':
-            f_list.append(i)
-            
-        elif lst[i] == ')':
-            s_list.append(i)
-            
-    return f_list, s_list
+import sys
 
-def find_oper(lst):
-    oper_idx = []
-    four = ['+','-','*','/']
-    for i in range(len(lst)):
-        if lst[i] in four:
-            oper_idx.append(i)
-    return oper_idx
+def priority(operator):
+    if operator == '*' or operator == '/':
+        return 4
+    elif operator == '+' or operator == '-':
+        return 2
+    else:
+        return 0
 
-def rf(ab):
-    stack =[]
-    op_idx = find_oper(ab)[0]
-    op = ab[op_idx]
-    front = ab[1:op_idx]
-    rear = ab[op_idx+1:-1]
-    stack.append(front[0])
-    stack.append(rear[0])
-    stack.append(op)
-    return stack
+def post():
+    Stack = []
+    N = str(input())
+    res = ''
+    for i in range(len(N)):
+        if N[i] == '+' or N[i] == '-' or N[i] == '*' or N[i] == '/':
+            if Stack:
+                if priority(Stack[-1]) >= priority(N[i]):
+                    res += Stack.pop()
+                    if Stack :
+                        if priority(Stack[-1]) == priority(N[i]):
+                            res += Stack.pop()
+                            Stack.append(N[i])
+                        else:
+                            Stack.append(N[i])
+                    else:
+                        Stack.append(N[i])
 
-inp = input('중위표기법으로 표기된 식을 입력해주세요: ')
+                else :
+                    Stack.append(N[i])
+
+            else:
+                Stack.append(N[i])
+
+        elif N[i] == '(':
+            Stack.append(N[i])
+
+        elif N[i] == ')':
+            while 1:
+                if Stack[-1] == '(':
+                    Stack.pop()
+                    break
+                else:
+                    res += Stack.pop()
+        else:
+            res += N[i]
+
+    if Stack:
+        while 1:
+            if not Stack:
+                break
+            res += Stack.pop()
+    print(res)
+post()
