@@ -48,3 +48,14 @@ class BinaryTree:
             return 0
         return max(self.height(root.left),self.height(root.right)) + 1
 
+    def copy_tree(self):
+        return self
+        
+    def q(self, n, m):                                  # 동일성을 검사하려는 n과 m을 받아서 둘이 다르다면 False, 만약 둘 다 None이거나 같은 노드라면 n과 m의 left, right를 출력함
+        if n == None or m == None:
+            return n==m
+        if n.item != m.item:
+            return False
+        return (self.q(n.left, m.left) and
+                self.q(m.right, n. left))
+
