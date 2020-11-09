@@ -1,12 +1,12 @@
 class Quad_Probing:
     def __init__(self,size):
-        self.M = size
-        self.a = [None] * size
-        self.d = [None] * size
-        self.N = 0
+        self.M = size                # 해시테이블 크기
+        self.a = [None] * size       # 키값들의 집합
+        self.d = [None] * size       # 데이터의 집합
+        self.N = 0                   # 원소의 개수
 
     def hash(self, key):
-        return key % self.M
+        return key % self.M          # 해시값 반환
 
     def put(self, key, data):
         initial_position = self.hash(key)
