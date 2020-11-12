@@ -52,3 +52,19 @@ class Linear_Probing:
         print()
         # for i in range(self.M):
         #     print('{:4}'.format(str(self.d[i])),' ' ,end='')
+
+    def delete(self, key):
+        initial_position = self.hash(key)
+        i = initial_position
+        j = 0
+        while True:                 
+            if self.a[i] == key:  
+                self.a[i] == None
+                self.d[i] == None
+                self.N -= 1 
+                return 
+
+            i = (initial_position + j)% self.M   
+            j += 1
+
+        return None

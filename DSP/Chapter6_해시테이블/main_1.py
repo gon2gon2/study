@@ -9,8 +9,6 @@ if __name__ == '__main__':
     t.put(35,'lime')
     t.put(50,'orange')
     t.put(63,'watermelon')
-    print('탐색결과')
-    print('50의 data = ', t.get(50))
-    print('63의 data = ', t.get(63))
-    print('해시테이블:')
     t.print_table()
+    t.delete(35)
+    t.print_table() # 왜 안 되는지 모르겠습니다...
