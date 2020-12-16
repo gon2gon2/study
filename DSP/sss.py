@@ -1,26 +1,36 @@
-# 맞는 문자 타입이 아니라고 반환해주는 오류 클래스
-class InvalidIntException(Exception):
-    def __init__(self,arg):
-        super().__init__('정수가 아닙니다.: {0}'.format(arg))
+import random
+ball1 = ball2 = ball3 = ball4 = ball5 = ball6 = ball7 = 0
 
-# text를 integer로 반환해주는 함수
-def convert_to_integer(text):
-    f = text[0]
-    if f == '-':
-        return float(text) 
-    elif text.isdigit(): # 부호(+, -)처리 못함
-        return float(text)
-    else:
-        raise InvalidIntException(text)
+ball1 = random.randint(1,45)
 
-if __name__ =='__main__':
-    try:
-        print('숫자를 입력하세요:')
-        text = input()
-        number = convert_to_integer(text)
-        print('3', number)
-    except InvalidIntException as err:
-        print('예외가 발생했습니다({0})'.format(err))
-        
-    else:
-        print('정수 형식으로 변환되었습니다 : {0}{1}'.format(number, type(number)))
+while True:
+    ball2 = random.randint(1,45)
+    if ball2 != ball1 :
+        break
+
+while True:
+    ball3 = random.randint(1,45)
+    if ball3 != ball1 and ball3 != ball2  :
+        break
+
+while True:
+    ball4 = random.randint(1,45)
+    if ball4 != ball1 and ball4 != ball2 and ball4 != ball3  :
+        break
+
+while True:
+    ball5 = random.randint(1,45)
+    if ball5 != ball1 and ball5 != ball2 and ball5 != ball3 and ball5 != ball4:
+        break
+
+while True:
+    ball6 = random.randint(1,45)
+    if ball6 != ball1 and ball6 != ball2 and ball6 != ball3 and ball6 != ball4 and ball6 != ball5:
+        break
+
+while True:
+    ball7 = random.randint(1,45)
+    if ball7 != ball1 and ball7 != ball2 and ball7 != ball3 and ball7 != ball4 and ball7 != ball5 and ball7 != ball6:
+        break
+
+print(str(ball1) +' '+ str(ball2) +' '+ str(ball3) +' '+ str(ball4) +' '+ str(ball5) +' '+ str(ball6) +' '+ 'and' +' '+ str(ball7))
