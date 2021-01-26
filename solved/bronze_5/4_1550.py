@@ -11,3 +11,4 @@ N = 0
 for idx in range(len(n_10)):
     N += int(n_10[idx]) * 16 **idx
 print(N)
+# 숫자가 13 이런거를 위한 로직이 없다
