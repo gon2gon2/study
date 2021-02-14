@@ -6,3 +6,7 @@
 
 # ignore all .zip files
 *.zip
+
+
+# ignore all .zip files
+*.jpg
